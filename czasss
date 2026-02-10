@@ -1,31 +1,18 @@
-public class Czas {
+public class Main {
+    public static void main(String[] args) {
 
-    private int godziny;
-    private int minuty;
+        Czas c1 = new Czas(14, 50);
+        System.out.println(c1);
+        c1.dodajMinuty(20);
+        System.out.println(c1);
 
-    public Czas(int godziny, int minuty) {
-        if (godziny < 0 || godziny > 23 || minuty < 0 || minuty > 59) {
-            this.godziny = 0;
-            this.minuty = 0;
-        } else {
-            this.godziny = godziny;
-            this.minuty = minuty;
-        }
-    }
+        Czas c2 = new Czas(23, 50);
+        c2.dodajMinuty(20);
+        System.out.println(c2);
 
-    @Override
-    public String toString() {
-        return String.format("%02d:%02d", godziny, minuty);
-    }
+        Czas c3 = new Czas(25, 70);
+        System.out.println(c3);
 
-    public void dodajMinuty(int m) {
-        int total = godziny * 60 + minuty + m;
-        total = ((total % 1440) + 1440) % 1440;
-        godziny = total / 60;
-        minuty = total % 60;
-    }
-
-    public boolean czyNoc() {
-        return godziny >= 22 || godziny < 6;
+        System.out.println(c2.czyNoc());
     }
 }

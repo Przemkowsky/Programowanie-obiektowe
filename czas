@@ -1,0 +1,37 @@
+public class Czas {
+
+    // pola prywatne
+    private int godziny;
+    private int minuty;
+
+    // konstruktor
+    public Czas(int godziny, int minuty) {
+        if (godziny < 0 || godziny > 23 || minuty < 0 || minuty > 59) {
+            this.godziny = 0;
+            this.minuty = 0;
+        } else {
+            this.godziny = godziny;
+            this.minuty = minuty;
+        }
+    }
+
+    // toString - format HH:MM
+    @Override
+    public String toString() {
+        return String.format("%02d:%02d", godziny, minuty);
+    }
+
+    // dodawanie minut (z modulo i północą)
+    public void dodajMinuty(int m) {
+        int totalMinutes = godziny * 60 + minuty + m;
+        totalMinutes = ((totalMinutes % 1440) + 1440) % 1440; // zabezpieczenie przed ujemnymi
+
+        godziny = totalMinutes / 60;
+        minuty = totalMinutes % 60;
+    }
+
+    // sprawdzanie nocy (jedna linia)
+    public boolean czyNoc() {
+        return godziny >= 22 || godziny < 6;
+    }
+}

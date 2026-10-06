@@ -1,23 +1,16 @@
 public class Main {
     public static void main(String[] args) {
 
-        // --- ZADANIE 1 ---
-        System.out.println("=== ZADANIE 1 ===");
         Uczen uczen = new Uczen("Anna");
         uczen.dodajOceny(5, 4, 3, 5);
         uczen.dodajOceny(2);
         System.out.println("Uczeń: " + uczen.getImie());
         System.out.println("Oceny: " + uczen.getOceny());
-        System.out.printf("Średnia: %.2f%n%n", uczen.obliczSrednia());
+        System.out.println("Średnia: " + uczen.obliczSrednia());
 
-        // --- ZADANIE 2 ---
-        System.out.println("=== ZADANIE 2 ===");
-        WysylaczWiadomosci wysylacz = new WysylaczEmail(); // polimorfizm
+        WysylaczWiadomosci wysylacz = new WysylaczEmail();
         wysylacz.wyslij("cześć", "spotkanie o 10", "pilne");
-        System.out.println();
 
-        // --- ZADANIE 3 ---
-        System.out.println("=== ZADANIE 3 ===");
         Mag mag = new Mag("Gandalf", 100, 50);
         mag.przedstawSie();
         mag.rzucCzar("Ork", "Goblin", "Troll");
